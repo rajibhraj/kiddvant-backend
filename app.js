@@ -1,12 +1,14 @@
+require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
+const connectDB = require("./config/db");
+
 const app = express();
 
 // CORS — allow Next.js dev server and production frontend
 app.use(
   cors({
     origin: [
-      // '*'
       "http://localhost:3000",
       "http://localhost:3001",
       "http://localhost:3002",
@@ -28,6 +30,16 @@ app.use(
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
+// Ensure DB is connected on every request (required for Vercel serverless)
+app.use(async (req, res, next) => {
+  try {
+    await connectDB();
+    next();
+  } catch (err) {
+    res.status(500).json({ success: false, message: "Database connection failed" });
+  }
+});
+
 // Routes
 app.use("/api/products", require("./routes/productRoutes"));
 
@@ -37,7 +49,7 @@ app.get("/", (req, res) => {
 });
 
 // 404 handler
-app.use((req, res) => {
+app.use((_req, res) => {
   res.status(404).json({ success: false, message: "Route not found" });
 });
 
