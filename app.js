@@ -23,6 +23,8 @@ app.use(
       "http://192.168.50.130:3002",
       "http://192.168.50.130:3003",
       "http://192.168.50.130:3004",
+      "https://kiddvant.com",
+      "https://www.kiddvant.com",
       process.env.FRONTEND_URL,
     ].filter(Boolean),
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
