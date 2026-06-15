@@ -46,6 +46,7 @@ app.use(async (req, res, next) => {
 
 // Routes
 app.use("/api/products", require("./routes/productRoutes"));
+app.use("/api/orders", require("./routes/orderRoutes"));
 
 // Health check route
 app.get("/", (req, res) => {
