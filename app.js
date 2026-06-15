@@ -18,6 +18,7 @@ app.use(
       "http://localhost:3002",
       "http://localhost:3003",
       "http://localhost:3004",
+      "http://localhost:3009",
       "http://192.168.50.130:3000",
       "http://192.168.50.130:3001",
       "http://192.168.50.130:3002",
@@ -49,6 +50,9 @@ app.use(async (req, res, next) => {
 // Routes
 app.use("/api/products", require("./routes/productRoutes"));
 app.use("/api/orders", require("./routes/orderRoutes"));
+app.use("/api/auth", require("./routes/authRoutes"));
+app.use("/api/site-config", require("./routes/siteConfigRoutes"));
+
 
 // Health check route
 app.get("/", (req, res) => {
