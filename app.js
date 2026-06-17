@@ -52,6 +52,7 @@ app.use("/api/products", require("./routes/productRoutes"));
 app.use("/api/orders", require("./routes/orderRoutes"));
 app.use("/api/auth", require("./routes/authRoutes"));
 app.use("/api/site-config", require("./routes/siteConfigRoutes"));
+app.use("/api/contact", require("./routes/contactRoutes"));
 
 
 // Health check route
